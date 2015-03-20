@@ -1,0 +1,16 @@
+This directory contains a fixed GlassPane example.  
+
+This fixes two bugs:
+  1) Key events were not supressed in the original example, they are now
+  2) On 1.2 and 1.3 systems, first mouse click after removing glass pane
+     would not be sent to the component under the mouse.  This was a bug
+     in the way JRootPane handled the glass pane component that has been
+     fixed in the 1.4 release.  FixedGlassPane.java (see below) provides
+     a workaround for 1.2 and 1.3, but is still safe to use with 1.4.
+
+The updated files are:
+
+GlassExample.java       Updated to use (and control) the new glass pane
+FixedGlassPane.java    Extension of JPanel that allows for redispatching
+                                      erroneous events to their rightful owners
+

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<simple>
+ <level1 attr="value" a2="v2">
+   This is arbitrary data...
+   <emptytag1 />
+   <et2 a1="v1"/>
+   <level2 more="attributes">
+     <input type="text" name="test"/>
+   </level2>
+ </level1>
+
+ <!-- one more level to test...--><test/>
+ <one>
+  <two>
+   <three>
+    <four/>
+    <five/><fiveA/>
+   </three>
+   <six/>
+   <seven>
+    <eight/>
+   </seven>
+  </two>
+  <nine/>
+ </one>
+ <multi><line>test</line></multi>
+</simple>

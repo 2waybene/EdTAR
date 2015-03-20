@@ -1,0 +1,11 @@
+<section>
+<paragraph resolver=NamedStyle:default {name=default,nrefs=1}>
+<content background=java.awt.Color[r=128,g=128,b=128]
+ foreground=java.awt.Color[r=0,g=0,b=0]>Line 1
+
+<paragraph resolver=NamedStyle:default {name=default,nrefs=1}>
+<content italic=true bold=true>Line 2
+
+<paragraph resolver=NamedStyle:default {name=default,nrefs=1}>
+<content>
+

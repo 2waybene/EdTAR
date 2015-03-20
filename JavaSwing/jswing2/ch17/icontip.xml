@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<simple>
+ <level1 attr="value" a2="v2" icon="door.open.gif">
+   This is arbitrary data...
+   <emptytag1 icon="world.gif"/>
+   <et2 a1="v1"/>
+   <level2 more="attributes" icon="door.open.gif">
+     <input type="text" name="test"/>
+   </level2>
+ </level1>
+
+ <!-- one more level to test...--><test/>
+ <one icon="one.gif">
+  <two icon="two.gif">
+   <three icon="three.gif">
+    <four/>
+    <five/><fiveA/>
+   </three>
+   <six/>
+   <seven>
+    <eight/>
+   </seven>
+  </two>
+  <nine/>
+ </one>
+ <multi><line>test</line></multi>
+</simple>
