@@ -1,0 +1,132 @@
+## For output analysis of file bsigma.dat
+options(object.size=10000000000)
+pathin<-"d:\\research\\dialldat\\"
+pathout<-"d:\\research\\MG research Splus graphs\\"
+length<-600000
+burnin<-70000
+lag<-15
+
+MGboavm <-function(dialID) {
+# dialID<-"074two3n"	
+ paraName<-"varm"
+ paraID<-"vm"
+
+chain1<-paste(dialID,"I1_", paraName,sep="")
+chain2<-paste(dialID,"I2_", paraName,sep="")
+
+boa.start()
+boa.par(ASCIIext=".dat")
+boa.par(path=pathin)
+boa.par(plot.onelink=T)
+boa.chain.import(chain1)
+boa.chain.import(chain2)
+# boa.chain.reset()
+# boa.chain.subset(iter=seq(burnin+1,length,by=lag))
+boa.chain.support(,c("Vma","Vmd","Vm"), c(0,Inf))
+
+
+sink(file=paste(pathout,dialID, paraID,'BoaOut.txt',sep=''))
+boa.print.info()
+randl1<-boa.randl(boa.chain("work")[[1]], boa.par("randl.q"), boa.par("randl.error"),
+	prob = 1 - boa.par("alpha"), delta = boa.par("randl.delta"))
+randl2<-boa.randl(boa.chain("work")[[2]], boa.par("randl.q"), boa.par("randl.error"),
+	prob = 1 - boa.par("alpha"), delta = boa.par("randl.delta"))
+ gandr<-boa.chain.gandr(boa.chain("work"), boa.chain("work.support"), boa.par("alpha"))
+boa.chain.subset(iter=seq(burnin+1,length,by=lag))
+stats1<-boa.stats(boa.chain("work")[[1]], probs = boa.par("quantiles"), 
+	batch.size = boa.par("batch.size"))
+stats2<-boa.stats(boa.chain("work")[[2]], probs = boa.par("quantiles"), 
+	batch.size = boa.par("batch.size"))
+hpd<-boa.work.hpd()
+boa.print.hpd()
+boaRt.list<-list(randl1=randl1, randl2=randl2, gandr=gandr, hpd=hpd, stats1=stats1, stats2=stats2)
+print.list(boaRt.list)
+sink()
+
+dput(boaRt.list, file=paste(pathout,dialID,paraID,'BoaRt.txt',sep=''))
+boa.plot("acf")
+guiSave('GraphSheet', Name='GSD2', FileName=paste(pathout,dialID, paraID,'_acf.SGR',sep=''))
+ boa.plot("gandr")
+ guiSave('GraphSheet', Name='GSD2', FileName=paste(pathout,dialID, paraID,'_gandr.SGR',sep=''))
+boa.plot("trace")
+guiSave('GraphSheet', Name='GSD2', FileName=paste(pathout,dialID, paraID,'_trace.SGR',sep=''))
+boa.plot("density")
+guiSave('GraphSheet', Name='GSD2', FileName=paste(pathout,dialID, paraID,'_density.SGR',sep=''))
+guiClose("GraphSheet", "GSD2")
+boa.chain.del(chain1)
+boa.chain.del(chain2)
+boa.quit()
+
+}
+
+for (i in 1:50) {
+  MGboavm(paste("a",as.character(i),"one",sep=''))	
+  MGboavm(paste("a",as.character(i),"two",sep=''))
+  i<-i+1;	
+}
+
+
+path<-"e:\\MG Simu2\\"
+
+MGboavm("114one2nb")
+MGboavm("114two2nb")
+MGboavm("205one2nb")
+MGboavm("124two3n")
+MGboavm("265one2na")
+MGboavm("265two2na")
+MGboavm("144one2na")
+MGboavm("144two2na")
+MGboavm("148one2h")
+MGboavm("168two3n")
+MGboavm("081one3n")
+MGboavm("326one3n")
+MGboavm("121one2h")
+MGboavm("121two2h")
+
+MGboavm("016one")
+MGboavm("016two")
+MGboavm("114one")
+MGboavm("114two")
+MGboavm("181one")
+MGboavm("181two")
+MGboavm("205one")
+MGboavm("205two")
+MGboavm("015one")
+MGboavm("015two")
+MGboavm("087one")
+MGboavm("087two")
+MGboavm("124one")
+MGboavm("124two")
+MGboavm("265one")
+MGboavm("265two")
+MGboavm("112one")
+MGboavm("112two")
+MGboavm("144one")
+MGboavm("144two")
+MGboavm("148one")
+MGboavm("148two")
+MGboavm("154one")
+MGboavm("154two")
+MGboavm("112one")
+MGboavm("112two")
+MGboavm("168one")
+MGboavm("168two")
+MGboavm("158one")
+MGboavm("158two")
+MGboavm("073one")
+MGboavm("073two")
+MGboavm("081one")
+MGboavm("081two")
+MGboavm("326one")
+MGboavm("326two")
+MGboavm("074one")
+MGboavm("074two")
+MGboavm("121one")
+MGboavm("121two")
+
+MGboavm("158one2e")
+MGboavm("268one2e")
+MGboavm("074one2e")
+MGboavm("148two2e")
+MGboavm("087one2h")
+MGboavm("326two2h")

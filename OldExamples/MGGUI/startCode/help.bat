@@ -1,0 +1,1 @@
+start c:\mggui\statCode\MG.doc

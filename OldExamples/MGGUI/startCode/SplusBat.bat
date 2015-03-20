@@ -1,0 +1,1 @@
+splus S_FIRST='guiOpen("Script", FileName="C:\\MGGUI\\startCode\\MG-batch1.ssc"); guiOpen("Script", FileName="C:\\MGGUI\\startCode\\MG-batch4.ssc")'

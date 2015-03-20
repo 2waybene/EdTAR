@@ -1,0 +1,1 @@
+dm 'wedit "C:\mggui\startCode\mg_result.sas"';
